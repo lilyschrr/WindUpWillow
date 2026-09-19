@@ -74,18 +74,28 @@ public class PlayerMovement : MonoBehaviour
             movement = new Vector2(x, y);
             if (timeVal > timeDelay)
             {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(x, 0.0f, 0.0f), 0.2f, WhatStopsMovement))
+                if (!CheckCollisionHorizontal(x) && x != 0f)
                 {
                     movePoint.position += new Vector3(x, 0.0f, 0.0f);
                     // animator.SetFloat("Horizontal", movement.x);
                    // animator.SetFloat("Speed", movement.sqrMagnitude);
                 }
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0.0f, y, 0.0f), 0.2f, WhatStopsMovement))
+                else if (!CheckCollisionVertical(y) && y != 0f)
                 {
                     movePoint.position += new Vector3(0.0f, y, 0.0f);
                     // animator.SetFloat("Vertical", movement.y);
-                   // animator.SetFloat("Speed", movement.sqrMagnitude);
+                    // animator.SetFloat("Speed", movement.sqrMagnitude);
                 }
+                else if (!CheckCollisionVertical(-y) && y !=0f)
+                {
+                    movePoint.position += new Vector3(0.0f, -y, 0.0f);
+                }
+                else if (!CheckCollisionHorizontal(-x) && x !=0f)
+                {
+                    movePoint.position += new Vector3(-x, 0.0f, 0.0f);
+                }
+                
+                
                 timeVal = 0;
                 sprIndex++;
                 if (sprIndex >= sprites.Length) sprIndex = 0;
@@ -103,6 +113,17 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    }
+
+
+    private bool CheckCollisionHorizontal(float nextX)
+    {
+        return Physics2D.OverlapCircle(movePoint.position + new Vector3(nextX, 0.0f, 0.0f), 0.2f, WhatStopsMovement);
+    }
+
+    private bool CheckCollisionVertical(float nextY)
+    {
+        return Physics2D.OverlapCircle(movePoint.position + new Vector3(0.0f, nextY, 0.0f), 0.2f, WhatStopsMovement);
     }
 
     private void FixedUpdate()
