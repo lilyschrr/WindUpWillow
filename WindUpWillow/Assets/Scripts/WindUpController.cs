@@ -1,3 +1,4 @@
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,7 +11,9 @@ public class WindUpController : MonoBehaviour
 
 [SerializeField] private float moveAmount;
 
+    
     public AudioSource Song;
+    [SerializeField] private float secondsPerBeat;
 
     private bool ableToWind = true;
     public bool AbleToWind =>ableToWind;
@@ -23,9 +26,16 @@ public class WindUpController : MonoBehaviour
         {
             if (Keyboard.current == null) return;
 
+            //speed up crank with right arrow in addition to t key
+            if (Keyboard.current.rightArrowKey.isPressed && Keyboard.current.tKey.isPressed)
+            {
+                windingKey.transform.Rotate(0, 90 * Time.deltaTime * 5, 0);
 
+                // Add sound effect
+                moveAmount += Time.deltaTime *5;
+            }
             // t key is being held down
-            if (Keyboard.current.tKey.isPressed)
+            else if (Keyboard.current.tKey.isPressed)
             {
                 windingKey.transform.Rotate(0, 90 * Time.deltaTime, 0);
 
@@ -40,12 +50,15 @@ public class WindUpController : MonoBehaviour
                 windingKey.SetActive(false);
                 ableToWind = false;
                 Song.Play();
+                //makes it so everything stops at the end of a beat and not mid-beat
+                moveAmount = Mathf.Round(moveAmount / secondsPerBeat) * secondsPerBeat;
             }
         }
         else
         {
             if (moveAmount >= 0) moveAmount -= Time.deltaTime;
             else Song.Stop();
+            
         }
     }
 }

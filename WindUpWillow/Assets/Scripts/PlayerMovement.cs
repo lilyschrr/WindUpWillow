@@ -10,17 +10,19 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
 
+    public float xDir;
+    public float yDir;
     private float x;
     private float y;
    // private Animator animator;
     public Sprite[] sprites;
-    private int sprIndex = 0;
+    public int sprIndex = 0;
 
     public Transform movePoint;
 
     public LayerMask WhatStopsMovement;
-    public float timeVal = 0;
-    private float timeDelay = 1;
+    private float timeVal = 0;
+    public float timeDelay = 1;
 
     [SerializeField] private GameObject windingKey;
     private WindUpController windingController;
@@ -38,8 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         movePoint.parent = null;
-        x = 1f;
-        sprIndex = 3;
+        x = xDir;
+        y = yDir;
         movePoint.position += new Vector3(x, 0.0f, 0.0f);
        // animator.SetFloat("Horizontal", movement.x);
         GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
@@ -49,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (windingController.AbleToWind) moveAmount = windingController.MoveAmount;
-        else if (moveAmount > 0)
+        else if (windingController.MoveAmount > 0)
         {
 
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);

@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3147850456077103430, guid: c6569ff65472c8748a91db7021f98731, type: 3}
+  m_Sprite: {fileID: -9141291576852978352, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,12 +138,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 10
   sprites:
-  - {fileID: -3147850456077103430, guid: c6569ff65472c8748a91db7021f98731, type: 3}
-  - {fileID: 1229306345199831394, guid: c6569ff65472c8748a91db7021f98731, type: 3}
-  - {fileID: 569164772957827714, guid: c6569ff65472c8748a91db7021f98731, type: 3}
-  - {fileID: -6355850233162541220, guid: c6569ff65472c8748a91db7021f98731, type: 3}
+  - {fileID: -9141291576852978352, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
+  - {fileID: 81130039094324472, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
+  - {fileID: 5521011612303505872, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
+  - {fileID: 8534967703812939662, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
   movePoint: {fileID: 1873584562359420067}
   WhatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
   timeVal: 0
+  windingKey: {fileID: 0}
+  moveAmount: 0

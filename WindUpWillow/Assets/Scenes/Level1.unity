@@ -127,6 +127,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2005138710967164467, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005138710967164467, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005138710967164467, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005138710967164467, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3064040438281205360, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -191,6 +207,10 @@ PrefabInstance:
       propertyPath: Song
       value: 
       objectReference: {fileID: 1225274749}
+    - target: {fileID: 5821639353731939541, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
+      propertyPath: secondsPerBeat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7870240378845666114, guid: 21a11faa413481646b8d5790b13242f1, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -3215,6 +3235,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1082540438494264516, guid: 64ed3232855a826468e56bdcf011bb11, type: 3}
+      propertyPath: xDir
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082540438494264516, guid: 64ed3232855a826468e56bdcf011bb11, type: 3}
+      propertyPath: sprIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082540438494264516, guid: 64ed3232855a826468e56bdcf011bb11, type: 3}
       propertyPath: windingKey
       value: 
       objectReference: {fileID: 1474669303}
@@ -3261,7 +3289,7 @@ PrefabInstance:
     - target: {fileID: 3240668925173660904, guid: 64ed3232855a826468e56bdcf011bb11, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6355850233162541220, guid: c6569ff65472c8748a91db7021f98731, type: 3}
+      objectReference: {fileID: 8534967703812939662, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
     - target: {fileID: 9202021481918420975, guid: 64ed3232855a826468e56bdcf011bb11, type: 3}
       propertyPath: m_Name
       value: Player
