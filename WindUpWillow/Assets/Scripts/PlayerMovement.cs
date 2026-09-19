@@ -1,4 +1,5 @@
 using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,98 +22,108 @@ public class PlayerMovement : MonoBehaviour
     public float timeVal = 0;
     private float timeDelay = 1;
 
+    [SerializeField] private GameObject windingKey;
+    private WindUpController windingController;
+    [SerializeField] private float moveAmount;
+    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-      //  animator = GetComponent<Animator>();
+        //  animator = GetComponent<Animator>();
         //  sprite = GetComponent<Sprite>();
-
+        windingController = windingKey.GetComponent<WindUpController>();
+        
     }
     private void Start()
     {
         movePoint.parent = null;
-        y = -1f;
+        x = 1f;
+        sprIndex = 3;
         movePoint.position += new Vector3(x, 0.0f, 0.0f);
        // animator.SetFloat("Horizontal", movement.x);
         GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
+        moveAmount = windingController.MoveAmount;
     }
 
     private void Update()
     {
-
-
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-        timeVal += Time.deltaTime;
-
-        if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f)
+        if (windingController.AbleToWind) moveAmount = windingController.MoveAmount;
+        else if (moveAmount > 0)
         {
 
-            if (Keyboard.current.aKey.isPressed)
-            {
-                x = -1f;
-                y = 0f;
-            }
-            else if (Keyboard.current.dKey.isPressed)
-            {
-                x = 1f;
-                y = 0f;
-            }
-            else if (Keyboard.current.sKey.isPressed)
-            {
-                y = -1f;
-                x = 0f;
-            }
-            else if (Keyboard.current.wKey.isPressed)
-            {
-                y = 1f;
-                x = 0f;
-            }
-            else
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
+            timeVal += Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f)
             {
 
-            }
-            movement = new Vector2(x, y);
-            if (timeVal > timeDelay)
-            {
-                if (!CheckCollisionHorizontal(x) && x != 0f)
+                if (Keyboard.current.aKey.isPressed)
                 {
-                    movePoint.position += new Vector3(x, 0.0f, 0.0f);
-                    // animator.SetFloat("Horizontal", movement.x);
-                   // animator.SetFloat("Speed", movement.sqrMagnitude);
+                    x = -1f;
+                    y = 0f;
                 }
-                else if (!CheckCollisionVertical(y) && y != 0f)
+                else if (Keyboard.current.dKey.isPressed)
                 {
-                    movePoint.position += new Vector3(0.0f, y, 0.0f);
-                    // animator.SetFloat("Vertical", movement.y);
-                    // animator.SetFloat("Speed", movement.sqrMagnitude);
+                    x = 1f;
+                    y = 0f;
                 }
-                else if (!CheckCollisionVertical(-y) && y !=0f)
+                else if (Keyboard.current.sKey.isPressed)
                 {
-                    movePoint.position += new Vector3(0.0f, -y, 0.0f);
+                    y = -1f;
+                    x = 0f;
                 }
-                else if (!CheckCollisionHorizontal(-x) && x !=0f)
+                else if (Keyboard.current.wKey.isPressed)
                 {
-                    movePoint.position += new Vector3(-x, 0.0f, 0.0f);
+                    y = 1f;
+                    x = 0f;
                 }
-                
-                
-                timeVal = 0;
-                sprIndex++;
-                if (sprIndex >= sprites.Length) sprIndex = 0;
-                GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
-            }
-            else
-            {
-               // animator.SetFloat("Horizontal", 0);
-               // animator.SetFloat("Vertical", 0);
-            }
+                else
+                {
+
+                }
+                movement = new Vector2(x, y);
+                if (timeVal > timeDelay)
+                {
+                    if (!CheckCollisionHorizontal(x) && x != 0f)
+                    {
+                        movePoint.position += new Vector3(x, 0.0f, 0.0f);
+                        // animator.SetFloat("Horizontal", movement.x);
+                        // animator.SetFloat("Speed", movement.sqrMagnitude);
+                    }
+                    else if (!CheckCollisionVertical(y) && y != 0f)
+                    {
+                        movePoint.position += new Vector3(0.0f, y, 0.0f);
+                        // animator.SetFloat("Vertical", movement.y);
+                        // animator.SetFloat("Speed", movement.sqrMagnitude);
+                    }
+                    else if (!CheckCollisionVertical(-y) && y != 0f)
+                    {
+                        movePoint.position += new Vector3(0.0f, -y, 0.0f);
+                    }
+                    else if (!CheckCollisionHorizontal(-x) && x != 0f)
+                    {
+                        movePoint.position += new Vector3(-x, 0.0f, 0.0f);
+                    }
 
 
+                    timeVal = 0;
+                    sprIndex++;
+                    if (sprIndex >= sprites.Length) sprIndex = 0;
+                    GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
+                }
+                else
+                {
+                    // animator.SetFloat("Horizontal", 0);
+                    // animator.SetFloat("Vertical", 0);
+                }
+
+                moveAmount -= Time.deltaTime;
+
+            }
+           
 
         }
-
-
-
     }
 
 

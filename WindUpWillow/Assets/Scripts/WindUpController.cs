@@ -10,29 +10,42 @@ public class WindUpController : MonoBehaviour
 
 [SerializeField] private float moveAmount;
 
-// Can be read from other scripts
-public float MoveAmount => moveAmount; // Total time the t key is held down
+    public AudioSource Song;
+
+    private bool ableToWind = true;
+    public bool AbleToWind =>ableToWind;
+    // Can be read from other scripts
+    public float MoveAmount => moveAmount; // Total time the t key is held down
 
     void Update()
     {
-        if (Keyboard.current == null) return;
-
-
-        // t key is being held down
-        if (Keyboard.current.tKey.isPressed)
+        if (ableToWind)
         {
-            windingKey.transform.Rotate(0, 90 * Time.deltaTime, 0);
-            
-            // Add sound effect
-            moveAmount += Time.deltaTime;
+            if (Keyboard.current == null) return;
+
+
+            // t key is being held down
+            if (Keyboard.current.tKey.isPressed)
+            {
+                windingKey.transform.Rotate(0, 90 * Time.deltaTime, 0);
+
+                // Add sound effect
+                moveAmount += Time.deltaTime;
+            }
+
+            // Triggers once when t key is released
+            if (Keyboard.current.tKey.wasReleasedThisFrame)
+            {
+                // Game object hidden (data is still accessible)
+                windingKey.SetActive(false);
+                ableToWind = false;
+                Song.Play();
+            }
         }
-
-        // Triggers once when t key is released
-        if (Keyboard.current.tKey.wasReleasedThisFrame)
+        else
         {
-            // Game object hidden (data is still accessible)
-            windingKey.SetActive(false);
-
+            if (moveAmount >= 0) moveAmount -= Time.deltaTime;
+            else Song.Stop();
         }
     }
 }
