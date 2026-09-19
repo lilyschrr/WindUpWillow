@@ -7,25 +7,32 @@ public class WindUpController : MonoBehaviour
 
 [SerializeField] private GameObject windingKey;
 
+
+[SerializeField] private float moveAmount;
+
+// Can be read from other scripts
+public float MoveAmount => moveAmount; // Total time the t key is held down
+
     void Update()
     {
         if (Keyboard.current == null) return;
 
 
-        // t key is held down
+        // t key is being held down
         if (Keyboard.current.tKey.isPressed)
         {
             windingKey.transform.Rotate(0, 90 * Time.deltaTime, 0);
             
             // Add sound effect
-            // Track time that key pressed (limit it?)
+            moveAmount += Time.deltaTime;
         }
 
         // Triggers once when t key is released
         if (Keyboard.current.tKey.wasReleasedThisFrame)
         {
-            // Disable the game object?
-        }
+            // Game object hidden (data is still accessible)
+            windingKey.SetActive(false);
 
+        }
     }
 }
