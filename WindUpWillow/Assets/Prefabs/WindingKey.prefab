@@ -79,9 +79,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2795102127157787170, guid: e9bfa2525f783db4c8b628af25537839, type: 3}
+  m_Sprite: {fileID: -4224549810373267961, guid: 4f76ab58f39ed3d40bd67ef2467b31c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindUpController
   windingKey: {fileID: 5401295509235871691}
+  moveAmount: 0
 --- !u!1 &9221236114353804651
 GameObject:
   m_ObjectHideFlags: 0
