@@ -11,6 +11,8 @@ public class WindUpController : MonoBehaviour
 
 [SerializeField] private float moveAmount;
 
+    public AudioSource SoundEffect;
+
     
     public AudioSource Song;
     [SerializeField] private float secondsPerBeat;
@@ -33,6 +35,7 @@ public class WindUpController : MonoBehaviour
                 windingKey.transform.Rotate(0, 90 * Time.deltaTime * 5, 0);
 
                 // Add sound effect
+                if (!SoundEffect.isPlaying) SoundEffect.Play();
                 moveAmount += Time.deltaTime *5;
             }
             // t key is being held down
@@ -41,6 +44,7 @@ public class WindUpController : MonoBehaviour
                 windingKey.transform.Rotate(0, 90 * Time.deltaTime, 0);
 
                 // Add sound effect
+                if(!SoundEffect.isPlaying)SoundEffect.Play();
                 moveAmount += Time.deltaTime;
             }
 
@@ -50,6 +54,7 @@ public class WindUpController : MonoBehaviour
                 // Game object hidden (data is still accessible)
                 windingKey.SetActive(false);
                 ableToWind = false;
+                SoundEffect.Stop();
                 Song.Play();
                 //makes it so everything stops at the end of a beat and not mid-beat
                 moveAmount = Mathf.Round(moveAmount / secondsPerBeat) * secondsPerBeat;
