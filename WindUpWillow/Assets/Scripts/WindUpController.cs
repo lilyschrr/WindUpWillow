@@ -14,6 +14,7 @@ public class WindUpController : MonoBehaviour
     
     public AudioSource Song;
     [SerializeField] private float secondsPerBeat;
+    public float SecondsPerBeat => secondsPerBeat;
 
     private bool ableToWind = true;
     public bool AbleToWind =>ableToWind;

@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
        // animator.SetFloat("Horizontal", movement.x);
         GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
         moveAmount = windingController.MoveAmount;
+        timeDelay = windingController.SecondsPerBeat;
     }
 
     private void Update()
