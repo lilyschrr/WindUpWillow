@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         { 
             timeVal += Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-            //if (!DeathNoise.isPlaying) SceneManager.LoadScene("Lose");
+            if (!DeathNoise.isPlaying) SceneManager.LoadScene("Lose");
         }
         else if (!WinPlayed && Win)
         {
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
                 timeVal = 0;
                 GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
             }
-            //if (!DeathNoise.isPlaying) SceneManager.LoadScene("Next level or title");
+            if (!WinNoise.isPlaying) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             
         }
     }
