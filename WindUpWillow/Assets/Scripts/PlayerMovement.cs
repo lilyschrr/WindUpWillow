@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private WindUpController windingController;
 
     public AudioSource DeathNoise;
+    public AudioSource WinNoise;
 
     public bool Alive = true;
 
@@ -168,7 +169,9 @@ public class PlayerMovement : MonoBehaviour
         {
 
             //sound effect
+            if (!WinNoise.isPlaying) WinNoise.Play();
             WinPlayed = true;
+            timeDelay = .2727f;
         }
         else if (Win)
         {
@@ -180,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
                 timeVal = 0;
                 GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
             }
+            //if (!DeathNoise.isPlaying) SceneManager.LoadScene("Next level or title");
         }
     }
    

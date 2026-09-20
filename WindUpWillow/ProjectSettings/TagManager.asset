@@ -56,5 +56,8 @@ TagManager:
   - name: Entities
     uniqueID: 3101398391
     locked: 0
+  - name: Player
+    uniqueID: 1201805595
+    locked: 0
   m_RenderingLayers:
   - Default
