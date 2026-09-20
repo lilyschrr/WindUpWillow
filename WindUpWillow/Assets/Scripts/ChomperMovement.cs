@@ -20,6 +20,7 @@ public class ChomperMovement : MonoBehaviour
     public int sprIndex = 0;
 
     public Transform movePoint;
+    public bool Stationary;
 
     public LayerMask Path;
     private float timeVal = 0;
@@ -44,6 +45,7 @@ public class ChomperMovement : MonoBehaviour
         x = xDir;
         y = yDir;
         movePoint.position += new Vector3(0.0f, 0.0f, 0.0f);
+        animator.SetBool("Stationary", Stationary);
         animator.SetFloat("Vertical", y);
         animator.SetFloat("Horizontal", x);
         animator.SetBool("Motion", false);
@@ -71,7 +73,7 @@ public class ChomperMovement : MonoBehaviour
                 if (timeVal > timeDelay)
                 {
                     animator.SetBool("Motion", false);
-                    if (x != 0f)
+                    if (x != 0f && !Stationary)
                     {
                         animator.SetBool("HDir", true);
                         if (CheckPathHorizontal(x))
@@ -102,7 +104,7 @@ public class ChomperMovement : MonoBehaviour
                         
 
                     }
-                    if (y != 0f)
+                    if (y != 0f && !Stationary)
                     {
                         animator.SetBool("HDir", false);
                         if (CheckPathVertical(y))
