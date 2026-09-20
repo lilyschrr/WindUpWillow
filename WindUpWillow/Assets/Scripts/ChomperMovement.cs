@@ -63,7 +63,7 @@ public class ChomperMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
             timeVal += Time.deltaTime;
 
-            if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f)
+            if (Vector3.Distance(transform.position, movePoint.position) <= .01f)
             {
                 //animator.SetBool("Motion", false);
                 
