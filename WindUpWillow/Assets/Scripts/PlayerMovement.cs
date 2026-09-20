@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask WhatStopsMovement;
     public LayerMask Killers;
+    public LayerMask WinLayer;
+
     private float timeVal = 0;
     public float timeDelay = 1;
 
@@ -33,8 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Alive = true;
 
-    
+    public bool Win = false;
     private bool DeathNotSet = true;
+
+    private bool WinPlayed = false;
     
 
     private void Awake()
@@ -69,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
             timeVal += Time.deltaTime;
             
 
-            if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f && Alive)
+            if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f && Alive && !Win)
             {
                 if (Keyboard.current.aKey.isPressed)
                 {
@@ -137,26 +141,45 @@ public class PlayerMovement : MonoBehaviour
 
 
             }
-            else if (!Alive)
+            else if (!Alive || Win)
             {
                 windingController.CeaseAll();
                 
             }
             if (Physics2D.OverlapCircle(transform.position, 0.1f, Killers)) Alive = false;
-
+            if (Physics2D.OverlapCircle(transform.position, 0.1f, WinLayer)) Win = true;
         }
-        else if (DeathNotSet)
+        else if (DeathNotSet && (!Alive || windingController.MoveAmount <= 0 && !Win))
         {
             //death
+            windingController.CeaseAll();
+            Alive = false;
             if (!DeathNoise.isPlaying) DeathNoise.Play();
             movePoint.position += new Vector3(0f, -100f, 0);
             DeathNotSet = false;
         }
-        else
+        else if(!Alive)
         { 
             timeVal += Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
             //if (!DeathNoise.isPlaying) SceneManager.LoadScene("Lose");
+        }
+        else if (!WinPlayed && Win)
+        {
+
+            //sound effect
+            WinPlayed = true;
+        }
+        else if (Win)
+        {
+            timeVal += Time.deltaTime;
+            if(timeVal >= timeDelay)
+            {
+                sprIndex++;
+                if (sprIndex >= sprites.Length) sprIndex = 0;
+                timeVal = 0;
+                GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
+            }
         }
     }
    
