@@ -7,4 +7,9 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void RetryTargetScene()
+    {
+        SceneManager.LoadScene(PlayerMovement.lastPlayedSceneIndex);
+    }
 }

@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private bool DeathNotSet = true;
 
     private bool WinPlayed = false;
+
+    public static int lastPlayedSceneIndex;
     
 
     private void Awake()
@@ -163,7 +165,11 @@ public class PlayerMovement : MonoBehaviour
         { 
             timeVal += Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-            if (!DeathNoise.isPlaying) SceneManager.LoadScene("Lose");
+            if (!DeathNoise.isPlaying){
+                lastPlayedSceneIndex = SceneManager.GetActiveScene().buildIndex; // For Retry button
+                SceneManager.LoadScene("Lose");
+            }
+
         }
         else if (!WinPlayed && Win)
         {
