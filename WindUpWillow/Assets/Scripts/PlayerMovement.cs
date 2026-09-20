@@ -2,6 +2,7 @@ using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,12 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public Transform movePoint;
 
     public LayerMask WhatStopsMovement;
+    public LayerMask Killers;
     private float timeVal = 0;
     public float timeDelay = 1;
 
     [SerializeField] private GameObject windingKey;
     private WindUpController windingController;
-    [SerializeField] private float moveAmount;
+
+    public AudioSource DeathNoise;
+
+    private bool Alive = true;
+    private bool DeathNotSet = true;
     
 
     private void Awake()
@@ -45,22 +51,24 @@ public class PlayerMovement : MonoBehaviour
         movePoint.position += new Vector3(x, 0.0f, 0.0f);
        // animator.SetFloat("Horizontal", movement.x);
         GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
-        moveAmount = windingController.MoveAmount;
         timeDelay = windingController.SecondsPerBeat;
     }
 
     private void Update()
     {
-        if (windingController.AbleToWind) moveAmount = windingController.MoveAmount;
+        if (windingController.AbleToWind)
+        {
+            //empty so nothing happens at this point
+        }
         else if (windingController.MoveAmount > 0)
         {
 
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
             timeVal += Time.deltaTime;
+            if (Physics2D.OverlapCircle(movePoint.position, 0.2f, Killers)) Alive = false;
 
-            if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f)
+            if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f && Alive)
             {
-
                 if (Keyboard.current.aKey.isPressed)
                 {
                     x = -1f;
@@ -100,16 +108,19 @@ public class PlayerMovement : MonoBehaviour
                         // animator.SetFloat("Vertical", movement.y);
                         // animator.SetFloat("Speed", movement.sqrMagnitude);
                     }
-                    else if (!CheckCollisionVertical(-y) && y != 0f)
+                    else if (x != 0f)
                     {
-                        movePoint.position += new Vector3(0.0f, -y, 0.0f);
+                        x = -x;
+                        if (!CheckCollisionHorizontal(x)) movePoint.position += new Vector3(x, 0.0f, 0.0f);
+
                     }
-                    else if (!CheckCollisionHorizontal(-x) && x != 0f)
+                    else if (y != 0f)
                     {
-                        movePoint.position += new Vector3(-x, 0.0f, 0.0f);
+                        y = -y;
+                        if (!CheckCollisionVertical(y)) movePoint.position += new Vector3(0f, y, 0.0f);
                     }
 
-
+                  
                     timeVal = 0;
                     sprIndex++;
                     if (sprIndex >= sprites.Length) sprIndex = 0;
@@ -119,16 +130,34 @@ public class PlayerMovement : MonoBehaviour
                 {
                     // animator.SetFloat("Horizontal", 0);
                     // animator.SetFloat("Vertical", 0);
+
                 }
 
-                moveAmount -= Time.deltaTime;
 
             }
-           
+            else if (!Alive)
+            {
+                windingController.CeaseAll();
+                
+            }
+
 
         }
+        else if (DeathNotSet)
+        {
+            //death
+            if (!DeathNoise.isPlaying) DeathNoise.Play();
+            movePoint.position += new Vector3(0f, -100f, 0);
+            DeathNotSet = false;
+        }
+        else
+        { 
+            timeVal += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
+            //if (!DeathNoise.isPlaying) SceneManager.LoadScene("Lose");
+        }
     }
-
+   
 
     private bool CheckCollisionHorizontal(float nextX)
     {

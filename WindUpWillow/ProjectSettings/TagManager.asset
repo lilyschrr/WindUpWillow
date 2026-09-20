@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - Walls
-  - 
-  - 
+  - Chomp Paths
+  - Killers
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Pit
     uniqueID: 2817154313
+    locked: 0
+  - name: Chomp path
+    uniqueID: 3508441095
     locked: 0
   - name: Ground
     uniqueID: 110086743

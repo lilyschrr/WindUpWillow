@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8518291577096066844
+--- !u!1 &1737912412114971091
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1873584562359420067}
-  m_Layer: 0
-  m_Name: Player Move Point
+  - component: {fileID: 6174173590742287525}
+  m_Layer: 8
+  m_Name: Chomper Move Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1873584562359420067
+--- !u!4 &6174173590742287525
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8518291577096066844}
+  m_GameObject: {fileID: 1737912412114971091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1316560636674431709}
+  m_Father: {fileID: 4648911325742198298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &9202021481918420975
+--- !u!1 &4903115597758456520
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,41 +39,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1316560636674431709}
-  - component: {fileID: 3240668925173660904}
-  - component: {fileID: 1082540438494264516}
-  - component: {fileID: -3079424224811699764}
-  m_Layer: 0
-  m_Name: Player
+  - component: {fileID: 4648911325742198298}
+  - component: {fileID: 6728269867199111946}
+  - component: {fileID: 4159423736318444362}
+  - component: {fileID: 6919410802238326287}
+  - component: {fileID: 4201081573513508350}
+  m_Layer: 8
+  m_Name: Chomper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1316560636674431709
+--- !u!4 &4648911325742198298
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202021481918420975}
+  m_GameObject: {fileID: 4903115597758456520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: -0.25, z: 0}
+  m_LocalPosition: {x: 2.52, y: 3.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1873584562359420067}
+  - {fileID: 6174173590742287525}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3240668925173660904
+--- !u!212 &6728269867199111946
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202021481918420975}
+  m_GameObject: {fileID: 4903115597758456520}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -115,7 +116,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9141291576852978352, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
+  m_Sprite: {fileID: -2611933621106527276, guid: 164e1b86206aeed4ba6bd02ff0947e43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,44 +126,41 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1082540438494264516
+--- !u!114 &4159423736318444362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202021481918420975}
+  m_GameObject: {fileID: 4903115597758456520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4383d4792b37d2f4283043b9b9a5444a, type: 3}
+  m_Script: {fileID: 11500000, guid: e05be0c7bb817d54fab4b7e9c88364dc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::ChomperMovement
   speed: 10
   xDir: 0
   yDir: 0
   sprites:
-  - {fileID: -9141291576852978352, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
-  - {fileID: 81130039094324472, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
-  - {fileID: 5521011612303505872, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
-  - {fileID: 8534967703812939662, guid: 5a265458b190ded40a24745d39ce625a, type: 3}
+  - {fileID: -5061575506994659746, guid: 164e1b86206aeed4ba6bd02ff0947e43, type: 3}
+  - {fileID: -237222432365737471, guid: 164e1b86206aeed4ba6bd02ff0947e43, type: 3}
+  - {fileID: -2611933621106527276, guid: 164e1b86206aeed4ba6bd02ff0947e43, type: 3}
+  - {fileID: -4529269998253306158, guid: 164e1b86206aeed4ba6bd02ff0947e43, type: 3}
   sprIndex: 0
-  movePoint: {fileID: 1873584562359420067}
-  WhatStopsMovement:
+  movePoint: {fileID: 6174173590742287525}
+  Path:
     serializedVersion: 2
-    m_Bits: 64
-  Killers:
-    serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   timeDelay: 1
   windingKey: {fileID: 0}
-  DeathNoise: {fileID: 0}
---- !u!58 &-3079424224811699764
+  moveAmount: 0
+--- !u!58 &6919410802238326287
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202021481918420975}
+  m_GameObject: {fileID: 4903115597758456520}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -190,5 +188,27 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.25}
+  m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!95 &4201081573513508350
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903115597758456520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d808e4805df5f8145b6f7f45d5dc2d66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

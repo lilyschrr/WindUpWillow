@@ -67,4 +67,9 @@ public class WindUpController : MonoBehaviour
             
         }
     }
+
+    public void CeaseAll()
+    {
+        moveAmount = 0;
+    }
 }
