@@ -31,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource DeathNoise;
 
-    private bool Alive = true;
+    public bool Alive = true;
+
+    
     private bool DeathNotSet = true;
     
 
