@@ -1052,10 +1052,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4159423736318444362, guid: 0f821a69aff036847addf4ca59ac5834, type: 3}
-      propertyPath: yDir
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4159423736318444362, guid: 0f821a69aff036847addf4ca59ac5834, type: 3}
       propertyPath: windingKey
       value: 
       objectReference: {fileID: 1474669303}
@@ -3888,10 +3884,6 @@ PrefabInstance:
       propertyPath: Song
       value: 
       objectReference: {fileID: 1225274749}
-    - target: {fileID: 617800750826644055, guid: 0e730d0bba545ff4489a99b2dbf0c823, type: 3}
-      propertyPath: moveAmount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2855328087243115497, guid: 0e730d0bba545ff4489a99b2dbf0c823, type: 3}
       propertyPath: m_Name
       value: WindingKey

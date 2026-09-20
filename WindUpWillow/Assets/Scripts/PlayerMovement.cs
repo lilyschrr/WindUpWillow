@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
             timeVal += Time.deltaTime;
-            if (Physics2D.OverlapCircle(movePoint.position, 0.2f, Killers)) Alive = false;
+            
 
             if (Vector3.Distance(transform.position, movePoint.position) <= .00000001f && Alive)
             {
@@ -140,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
                 windingController.CeaseAll();
                 
             }
-
+            if (Physics2D.OverlapCircle(transform.position, 0.1f, Killers)) Alive = false;
 
         }
         else if (DeathNotSet)

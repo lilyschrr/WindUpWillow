@@ -27,7 +27,6 @@ public class ChomperMovement : MonoBehaviour
 
     [SerializeField] private GameObject windingKey;
     private WindUpController windingController;
-    [SerializeField] private float moveAmount;
     
 
     private void Awake()
@@ -49,13 +48,15 @@ public class ChomperMovement : MonoBehaviour
         animator.SetFloat("Horizontal", x);
         animator.SetBool("Motion", false);
         GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
-        moveAmount = windingController.MoveAmount;
         timeDelay = windingController.SecondsPerBeat;
     }
 
     private void Update()
     {
-        if (windingController.AbleToWind) moveAmount = windingController.MoveAmount;
+        if (windingController.AbleToWind)
+        {
+
+        }
         else if (windingController.MoveAmount > 0)
         {
 
@@ -169,7 +170,6 @@ public class ChomperMovement : MonoBehaviour
                     // animator.SetFloat("Vertical", 0);
                 }
 
-                moveAmount -= Time.deltaTime;
 
             }
             else
