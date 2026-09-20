@@ -18,6 +18,8 @@ public class WindUpController : MonoBehaviour
     [SerializeField] private float secondsPerBeat;
     public float SecondsPerBeat => secondsPerBeat;
 
+    private float WindSpeed = 4f;
+
     private bool ableToWind = true;
     public bool AbleToWind =>ableToWind;
     // Can be read from other scripts
@@ -32,20 +34,20 @@ public class WindUpController : MonoBehaviour
             //speed up crank with right arrow in addition to t key
             if (Keyboard.current.rightArrowKey.isPressed && Keyboard.current.tKey.isPressed)
             {
-                windingKey.transform.Rotate(0, 90 * Time.deltaTime * 5, 0);
+                windingKey.transform.Rotate(0, 90 * Time.deltaTime * WindSpeed * 1.5f, 0);
 
                 // Add sound effect
                 if (!SoundEffect.isPlaying) SoundEffect.Play();
-                moveAmount += Time.deltaTime *5;
+                moveAmount += Time.deltaTime *WindSpeed * 1.5f;
             }
             // t key is being held down
             else if (Keyboard.current.tKey.isPressed)
             {
-                windingKey.transform.Rotate(0, 90 * Time.deltaTime, 0);
+                windingKey.transform.Rotate(0, 90 * Time.deltaTime *WindSpeed, 0);
 
                 // Add sound effect
                 if(!SoundEffect.isPlaying)SoundEffect.Play();
-                moveAmount += Time.deltaTime;
+                moveAmount += Time.deltaTime * WindSpeed;
             }
 
             // Triggers once when t key is released
