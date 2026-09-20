@@ -184,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = sprites[sprIndex];
             }
             //if (!DeathNoise.isPlaying) SceneManager.LoadScene("Next level or title");
+            
         }
     }
    

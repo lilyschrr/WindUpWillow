@@ -43,7 +43,7 @@ public class ChomperMovement : MonoBehaviour
         movePoint.parent = null;
         x = xDir;
         y = yDir;
-        movePoint.position += new Vector3(x, 0.0f, 0.0f);
+        movePoint.position += new Vector3(0.0f, 0.0f, 0.0f);
         animator.SetFloat("Vertical", y);
         animator.SetFloat("Horizontal", x);
         animator.SetBool("Motion", false);
